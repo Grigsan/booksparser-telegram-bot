@@ -1,0 +1,22 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "mcp-server-books"
+version = "1.0.0"
+description = "MCP Server для парсера книг Books to Scrape"
+authors = [
+    {name = "Books Parser Team", email = "books@example.com"},
+]
+dependencies = [
+    "mcp>=1.0.0",
+    "sqlite3",
+]
+requires-python = ">=3.8"
+
+[project.scripts]
+mcp-server-books = "mcp_server_books.__main__:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["mcp_server_books"]

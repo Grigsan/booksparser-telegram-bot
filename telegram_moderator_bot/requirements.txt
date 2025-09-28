@@ -1,0 +1,21 @@
+# Telegram Bot Framework
+aiogram==3.4.1
+aiohttp==3.9.5
+
+# Database
+asyncpg==0.29.0
+sqlalchemy==2.0.23
+
+# Environment
+python-dotenv==1.0.0
+
+# Logging
+loguru==0.7.2
+
+# Utilities
+aiofiles==23.2.1
+pydantic==2.5.0
+
+# Development
+pytest==7.4.3
+pytest-asyncio==0.21.1

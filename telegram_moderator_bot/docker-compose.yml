@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  moderator-bot:
+    build: .
+    container_name: telegram_moderator_bot
+    restart: unless-stopped
+    environment:
+      - BOT_TOKEN=8477658027:AAFM14z-Vt4L0W4Ig_e6oeddk5hbAJf0n3M
+      - BOT_USERNAME=moderator_bot
+      - DB_HOST=postgresql-grigson69.alwaysdata.net
+      - DB_PORT=5432
+      - DB_USER=grigson69
+      - DB_PASSWORD=grigson96911
+      - DB_NAME=grigson69_2
+      - DATABASE_URL=postgresql+asyncpg://grigson69:grigson96911@postgresql-grigson69.alwaysdata.net:5432/grigson69_2
+      - LOG_LEVEL=INFO
+      - LOG_FILE=logs/moderator_bot.log
+      - ADMIN_IDS=385845646
+      - MODERATION_ENABLED=true
+      - AUTO_DELETE_DELAY=5
+      - MAX_WARNINGS=3
+      - PROFANITY_FILTER=true
+      - SPAM_FILTER=true
+      - LINK_FILTER=false
+    # volumes:
+      # - ./logs:/app/logs
+    networks:
+      - bot-network
+      - tehnoparser_network
+    healthcheck:
+      test: ["CMD", "python", "-c", "import sys; sys.exit(0)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  bot-network:
+    driver: bridge
+  tehnoparser_network:
+    external: true
